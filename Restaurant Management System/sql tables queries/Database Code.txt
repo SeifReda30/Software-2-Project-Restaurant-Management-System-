@@ -1,0 +1,85 @@
+create table Customers(
+ID int primary key,
+FullName varchar(100) not null default 'customer',
+Address varchar(100),
+Phone_Number varchar(100),
+Marketing bit default(0),
+Loyalty_Reward_Programs bit default(0),
+Total_Payments float default(0),
+Points int default(0),
+Gifts int default(0),
+Spetial_Offers int default(0)
+);
+
+select * from Customers
+
+insert into dbo.Customers (ID,FullName,Address,Phone_Number,Marketing,Loyalty_Reward_Programs,Total_Payments)
+values (1,'Ahmed','cairo','0123',0,0,240) 
+insert into dbo.Customers (ID,FullName,Address,Phone_Number,Marketing,Loyalty_Reward_Programs,Total_Payments)
+values (2,'basem','alex','4567',0,1,100) 
+insert into dbo.Customers (ID,FullName,Address,Phone_Number,Marketing,Loyalty_Reward_Programs,Total_Payments)
+values (3,'ali','aswan','891011',1,0,300) 
+insert into dbo.Customers (ID,FullName,Address,Phone_Number,Marketing,Loyalty_Reward_Programs,Total_Payments)
+values (4,'tamer','giza','12131415',1,1,400) 
+insert into dbo.Customers (ID,FullName,Address,Phone_Number,Marketing,Loyalty_Reward_Programs,Total_Payments)
+values (5,'seif','helwan','01596',0,0,160) 
+insert into dbo.Customers (ID,FullName,Address,Phone_Number,Marketing,Loyalty_Reward_Programs,Total_Payments)
+values (6,'ebrahim','newmarg','23215',1,0,30.5) 
+
+create table meals(
+ID int primary key,
+Name varchar(100) not null,
+price float not null,
+quantity int,
+);
+
+select * from meals
+
+insert into Meals(ID,Name,price,quantity) values (1,'rice',20,15)
+insert into Meals(ID,Name,price,quantity) values (2,'meat',20,10)
+insert into Meals(ID,Name,price,quantity) values (3,'chicken',20,25)
+insert into Meals(ID,Name,price,quantity) values (4,'fish',20,7)
+insert into Meals(ID,Name,price,quantity) values (5,'salad',20,30)
+
+create table Orders(
+Customer_ID int foreign key references Customers(ID),
+Meal_ID int foreign key references Meals(ID),
+quantity int not null,
+total_price float
+);
+
+select * from Orders
+
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (1,1,5,100)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (2,3,5,100)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (6,4,5,100)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (1,4,2,40)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (1,3,6,120)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (1,1,6,120)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (1,4,1,20)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (6,1,3,60)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (6,4,2,40)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (6,5,3,60)
+insert into Orders (Customer_ID,Meal_ID,quantity,total_price) values (8,1,2,50)
+
+create table employee(
+id int primary key,
+name varchar(50) not null,
+password varchar(50) not null,
+phone varchar(50) not null,
+address varchar(50) not null
+);
+
+select * from employee
+
+insert into employee (id,name,password,phone,address) values (1,'s','1','1','1')
+
+create table admin(
+id int primary key,
+name varchar(50) not null,
+password varchar(50) not null,
+);
+
+select * from admin
+
+insert into admin(id,name,password) values (1,'s','1')
