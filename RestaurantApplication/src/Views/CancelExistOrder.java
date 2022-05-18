@@ -96,7 +96,7 @@ public class CancelExistOrder extends javax.swing.JFrame {
         else{
             ArrayList<Object> OrderData = new ArrayList<Object>();
              try{
-                 OrderData = OrdersScreensController.GetOrderData(customerid.getText(), mealid.getText(), quantity.getText());
+                 OrderData = OrdersTableController.GetOrderData(customerid.getText(), mealid.getText(), quantity.getText());
                  System.out.println(OrderData.size());
                  ArrayList<Object> MealData = MealsScreensController.GetMealsData(1, Integer.parseInt(mealid.getText()) );
                  MealsScreensController.UpdateMealsTable(4, Integer.parseInt(mealid.getText()),
@@ -126,7 +126,7 @@ public class CancelExistOrder extends javax.swing.JFrame {
                 }catch(SQLException ex){ JOptionPane.showMessageDialog(null,"Modifying on Customer rewardes is Failed!","Error",JOptionPane.ERROR_MESSAGE);}
                 
              try{
-                int IsDeleted = OrdersScreensController.UpdateOrdersTable( 1, customerid.getText(), mealid.getText(), quantity.getText() );
+                int IsDeleted = OrdersTableController.UpdateOrdersTable( 1, customerid.getText(), mealid.getText(), quantity.getText() );
                 if(IsDeleted == 1) JOptionPane.showMessageDialog(null,"Order has been canceld!","Success",JOptionPane.INFORMATION_MESSAGE);
              }catch (SQLException ex) { JOptionPane.showMessageDialog(null,"Order has not been canceld!","Error",JOptionPane.ERROR_MESSAGE);}
                 
