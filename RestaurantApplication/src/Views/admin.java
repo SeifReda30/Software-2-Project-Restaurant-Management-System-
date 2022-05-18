@@ -1805,7 +1805,7 @@ public class admin extends javax.swing.JFrame {
         try {   
             if (this.employeeidDelete.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill Employee id","Error", JOptionPane.ERROR_MESSAGE);
             else { 
-                int isDeleted = EmployeeScreensController.UpdateEmployeeTable(1,Integer.parseInt(employeeidDelete.getText()));
+                int isDeleted = EmployeeTableController.UpdateEmployeeTable(1,Integer.parseInt(employeeidDelete.getText()));
                 if (isDeleted == 1) JOptionPane.showMessageDialog(this, "Employee Deleted Successfully");
                 }
         } catch (SQLException ex) { JOptionPane.showMessageDialog(null,"Deleting Employee is Failed! Or Id Not Found !","Error",JOptionPane.ERROR_MESSAGE);}
@@ -1816,7 +1816,7 @@ public class admin extends javax.swing.JFrame {
                 this.employeePhoneUpdate.getText().equals("")||this.employeeAddressUpdate.getText().equals(""))
                 JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
         else
-        {   int isUpdated = EmployeeScreensController.UpdateEmployeeTable(2, Integer.parseInt(this.employeeIdUpdate.getText()), 
+        {   int isUpdated = EmployeeTableController.UpdateEmployeeTable(2, Integer.parseInt(this.employeeIdUpdate.getText()), 
                     employeeNameUpdate.getText(), employeePasswordUpdate.getText(), employeePhoneUpdate.getText(), employeeAddressUpdate.getText());
             if(isUpdated == 1) JOptionPane.showMessageDialog(this, "Employee Updated Successfully");
             }        
@@ -1956,7 +1956,7 @@ public class admin extends javax.swing.JFrame {
         try {   if (this.employeeNameAdd.getText().equals("")||this.employeeIdAdd.getText().equals("")||
                 this.employeePasswordAdd.getText().equals("")||this.employeePhoneAdd.getText().equals("")||this.employeeAddressAdd.getText().equals(""))
                     JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
-                else { int isAdded = EmployeeScreensController.UpdateEmployeeTable(0, Integer.parseInt(employeeIdAdd.getText()), 
+                else { int isAdded = EmployeeTableController.UpdateEmployeeTable(0, Integer.parseInt(employeeIdAdd.getText()), 
                         employeeNameAdd.getText(), employeePasswordAdd.getText(), employeePhoneAdd.getText(), employeeAddressAdd.getText());
                         if(isAdded == 1) JOptionPane.showMessageDialog(this, "Employee Added Successfully");
                         this.employeeIdAdd.setText(null);
@@ -1978,7 +1978,7 @@ public class admin extends javax.swing.JFrame {
 
     private void SearchUpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchUpdateEmployeeActionPerformed
         try { if (this.employeeIdUpdate.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill Employee id","Error", JOptionPane.ERROR_MESSAGE);
-              else {    ArrayList<Object> EmployeeData = EmployeeScreensController.GetEmployeesData(1, Integer.parseInt(employeeIdUpdate.getText()));
+              else {    ArrayList<Object> EmployeeData = EmployeeTableController.GetEmployeesData(1, Integer.parseInt(employeeIdUpdate.getText()));
                     this.employeeNameUpdate.setText(EmployeeData.get(EmployeeDataType.Username.ordinal())+"");
                     this.employeePasswordUpdate.setText(EmployeeData.get(EmployeeDataType.Password.ordinal())+"");
                     this.employeePasswordUpdate.setEchoChar('*');
@@ -1999,7 +1999,7 @@ public class admin extends javax.swing.JFrame {
     private void SearchEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchEmployeeActionPerformed
         try{ if (this.employeeSearchId.getText().equals("")) JOptionPane.showMessageDialog(this, "You haven't entered any id !","Error", JOptionPane.ERROR_MESSAGE);
             else{
-                    ArrayList<Object> EmployeeData = EmployeeScreensController.GetEmployeesData(1, Integer.parseInt(employeeSearchId.getText()));
+                    ArrayList<Object> EmployeeData = EmployeeTableController.GetEmployeesData(1, Integer.parseInt(employeeSearchId.getText()));
                     this.EmployeeNameSearch.setText(EmployeeData.get(EmployeeDataType.Username.ordinal())+"");
                     this.EmployeePasswordSearch.setText(EmployeeData.get(EmployeeDataType.Password.ordinal())+"");
                     String HiddenPass = "";
@@ -2025,7 +2025,7 @@ public class admin extends javax.swing.JFrame {
 
     private void ShowPasswordSearchEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordSearchEmployeeActionPerformed
          try{           
-        ArrayList<Object> EmployeeData = EmployeeScreensController.GetEmployeesData(1, Integer.parseInt(employeeSearchId.getText()));
+        ArrayList<Object> EmployeeData = EmployeeTableController.GetEmployeesData(1, Integer.parseInt(employeeSearchId.getText()));
         this.EmployeePasswordSearch.setText(EmployeeData.get(EmployeeDataType.Password.ordinal())+"");
         } catch (SQLException ex) { JOptionPane.showMessageDialog(this, "Id Not Found !","Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_ShowPasswordSearchEmployeeActionPerformed
@@ -2036,7 +2036,7 @@ public class admin extends javax.swing.JFrame {
         emp_table.setModel(EmployeesDataTable); EmployeesDataTable.setRowCount(0); EmployeesDataTable.setColumnCount(0);
         EmployeesDataTable.addColumn("Id");EmployeesDataTable.addColumn("Name");
         EmployeesDataTable.addColumn("password"); EmployeesDataTable.addColumn("Phone");EmployeesDataTable.addColumn("Address");
-        ArrayList<Object> EmployeesData = EmployeeScreensController.GetEmployeesData(0);
+        ArrayList<Object> EmployeesData = EmployeeTableController.GetEmployeesData(0);
         for(int Index=0; Index<EmployeesData.size(); Index+=5){
             EmployeesDataTable.addRow( new Object[] { EmployeesData.get(Index+EmployeeDataType.Id.ordinal()), 
                 EmployeesData.get(Index+EmployeeDataType.Username.ordinal()), EmployeesData.get(Index+EmployeeDataType.Password.ordinal()), 
@@ -2063,7 +2063,7 @@ public class admin extends javax.swing.JFrame {
         emp_table_report.setModel(EmployeesDataTable);  EmployeesDataTable.setRowCount(0); EmployeesDataTable.setColumnCount(0);
         EmployeesDataTable.addColumn("Id");EmployeesDataTable.addColumn("Name");
         EmployeesDataTable.addColumn("password"); EmployeesDataTable.addColumn("Phone");EmployeesDataTable.addColumn("Address");
-        ArrayList<Object> EmployeesData = EmployeeScreensController.GetEmployeesData(0);
+        ArrayList<Object> EmployeesData = EmployeeTableController.GetEmployeesData(0);
         for(int Index=0; Index<EmployeesData.size(); Index+=5){
             EmployeesDataTable.addRow( new Object[] { EmployeesData.get(Index+EmployeeDataType.Id.ordinal()), 
                 EmployeesData.get(Index+EmployeeDataType.Username.ordinal()), EmployeesData.get(Index+EmployeeDataType.Password.ordinal()), 

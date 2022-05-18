@@ -5,7 +5,7 @@ import Models.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class EmployeeScreensController {
+public class EmployeeTableController {
         public static ArrayList<Object> GetEmployeesData(Object...DataFetch)throws SQLException{
         ArrayList<Object> EmployeesData = new ArrayList<Object>();
         ResultSet ReturnedTableData = null;
