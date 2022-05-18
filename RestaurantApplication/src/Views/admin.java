@@ -1847,7 +1847,7 @@ public class admin extends javax.swing.JFrame {
     private void DeleteAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAdminActionPerformed
         try {   if (this.idDeleteAdmin.getText().equals("")) JOptionPane.showMessageDialog(this, "You haven't entered any id","Error", JOptionPane.ERROR_MESSAGE);
                 else{
-                    int isDeleted = AdminScreensController.UpdateAdminTable(1,Integer.parseInt(idDeleteAdmin.getText()));
+                    int isDeleted = AdminTableController.UpdateAdminTable(1,Integer.parseInt(idDeleteAdmin.getText()));
                     if (isDeleted == 1) JOptionPane.showMessageDialog(this, "Admin Deleted Successfully");
                     }
        }catch (SQLException ex) {JOptionPane.showMessageDialog(null,"Modifying Admin is Failed! Or Id Not Found !","Error",JOptionPane.ERROR_MESSAGE);}
@@ -1903,7 +1903,7 @@ public class admin extends javax.swing.JFrame {
         try {   if (this.adminIdAdd.getText().equals("")||this.adminUsernameAdd.getText().equals("")||this.adminPasswordAdd.getText().equals(""))
                     JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
                 else {
-                        int isAdded = AdminScreensController.UpdateAdminTable(0, Integer.parseInt(adminIdAdd.getText()), 
+                        int isAdded = AdminTableController.UpdateAdminTable(0, Integer.parseInt(adminIdAdd.getText()), 
                                 adminUsernameAdd.getText(), adminPasswordAdd.getText());
                         if(isAdded==1) JOptionPane.showMessageDialog(this, "Admin Added Successfully");
                         this.adminIdAdd.setText(null);
@@ -1916,7 +1916,7 @@ public class admin extends javax.swing.JFrame {
     private void SearchUpdateAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchUpdateAdminActionPerformed
         try { if (this.IdAdminUpdate.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill Admin id","Error", JOptionPane.ERROR_MESSAGE);
               else{
-                    ArrayList<Object> AdminData = AdminScreensController.GetAdminsData(1, Integer.parseInt(IdAdminUpdate.getText()));
+                    ArrayList<Object> AdminData = AdminTableController.GetAdminsData(Integer.parseInt(IdAdminUpdate.getText()));
                     this.usernameAdminUpdate.setText(AdminData.get(AdminDataType.Username.ordinal())+"");
                     this.PasswordAdminUpdate.setText(AdminData.get(AdminDataType.Password.ordinal())+"");
                     this.PasswordAdminUpdate.setEchoChar('*');
@@ -1937,7 +1937,7 @@ public class admin extends javax.swing.JFrame {
         try{    if (this.usernameAdminUpdate.getText().equals("")||this.PasswordAdminUpdate.getText().equals("")||this.IdAdminUpdate.getText().equals(""))
                     JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
                 else {
-                        int isUpdated = AdminScreensController.UpdateAdminTable(2, Integer.parseInt(IdAdminUpdate.getText()), 
+                        int isUpdated = AdminTableController.UpdateAdminTable(2, Integer.parseInt(IdAdminUpdate.getText()), 
                             usernameAdminUpdate.getText(), PasswordAdminUpdate.getText());
                         if(isUpdated==1) JOptionPane.showMessageDialog(this, "Admin Updated Successfully");
                       }

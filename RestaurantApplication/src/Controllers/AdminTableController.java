@@ -5,24 +5,11 @@ import Models.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class AdminScreensController {
+public class AdminTableController {
     
-    public static void AdminScreenLoading(){
-        admin scr = new admin();
-                scr.setVisible(true);
-    }
-    
-    public static ArrayList<Object> GetAdminsData(Object...DataFetch)throws SQLException{
+    public static ArrayList<Object> GetAdminsData(int id)throws SQLException{
         ArrayList<Object> AdminsData = new ArrayList<Object>();
-        ResultSet ReturnedTableData = null;
-        switch((int)DataFetch[Index.DataFetchMode.ordinal()]){
-            case 0:
-                //ReturnedTableData = AdminTableQueries.SelectCustomersData();
-              break;
-            case 1:
-                ReturnedTableData = AdminTableQueries.SearchAdminById(Integer.parseInt(DataFetch[Index.DataFetchWith.ordinal()]+""));
-              break;
-        }
+        ResultSet ReturnedTableData = AdminTableQueries.SearchAdminById(id);
         while(ReturnedTableData.next()) {
             AdminsData.add(ReturnedTableData.getString("id"));
             AdminsData.add(ReturnedTableData.getString("name"));

@@ -6,7 +6,7 @@ import java.sql.*;
 import javax.swing.table.*;
 import java.util.ArrayList;
 
-public class BillScreenController {
+public class BillController {
     
     public static void BillScreenLoading(DefaultTableModel Orders, Object...BillData){
         Bill Screen = new Bill(Orders, BillData);

@@ -105,7 +105,7 @@ public class admin_login extends javax.swing.JFrame {
             case 1:
                 JOptionPane.showMessageDialog(this, "Welcome "+Username+" ! You have logged in Successfully");
                 this.dispose();
-                AdminScreensController.AdminScreenLoading();
+                AdminTableController.AdminScreenLoading();
                 break;
             case 2:
                 JOptionPane.showMessageDialog(this, "Incorrect Password","Error", JOptionPane.ERROR_MESSAGE);

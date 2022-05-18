@@ -366,7 +366,7 @@ public class Order extends javax.swing.JFrame {
             }
             }catch(SQLException ex){ JOptionPane.showMessageDialog(null,"updating meal quantity is Failed!","Error",JOptionPane.ERROR_MESSAGE); }
             
-            BillScreenController.BillScreenLoading((DefaultTableModel)ordersTable.getModel(), customerid.getText(), totalprice.getText(), totalpoints.getText());
+            BillController.BillScreenLoading((DefaultTableModel)ordersTable.getModel(), customerid.getText(), totalprice.getText(), totalpoints.getText());
         }
     }//GEN-LAST:event_SubmitActionPerformed
 
@@ -422,7 +422,7 @@ public class Order extends javax.swing.JFrame {
     }//GEN-LAST:event_RefreshActionPerformed
 
     private void CancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelOrderActionPerformed
-        BillScreenController.CancelBillScreenLoading();
+        BillController.CancelBillScreenLoading();
     }//GEN-LAST:event_CancelOrderActionPerformed
 
     private void mealsTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mealsTableKeyPressed
