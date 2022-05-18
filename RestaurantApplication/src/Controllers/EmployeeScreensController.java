@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class EmployeeScreensController {
     
-    public static ArrayList<Object> GetEmployeesData(Object...DataFetch)throws SQLException{
+      public static ArrayList<Object> GetEmployeesData(Object...DataFetch)throws SQLException{
         ArrayList<Object> EmployeesData = new ArrayList<Object>();
         ResultSet ReturnedTableData = null;
         switch((int)DataFetch[Index.DataFetchMode.ordinal()]){
@@ -43,4 +43,5 @@ public class EmployeeScreensController {
         }
         return ResultOfOperation;
     }
+
 }
