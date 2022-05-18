@@ -339,7 +339,7 @@ public class Order extends javax.swing.JFrame {
             try{
                 int IsAdded = 0;
                 for(int OrderRow = 0; OrderRow < ordersTable.getRowCount();OrderRow++) {
-                    IsAdded = OrdersScreensController.UpdateOrdersTable(0, OrdersTable.getValueAt(OrderRow,0), 
+                    IsAdded = OrdersTableController.UpdateOrdersTable(0, OrdersTable.getValueAt(OrderRow,0), 
                             OrdersTable.getValueAt(OrderRow,1), OrdersTable.getValueAt(OrderRow,2), OrdersTable.getValueAt(OrderRow,3) );
                     }
                     if(IsAdded == 1) JOptionPane.showMessageDialog(null,"Order has been submited!","Success",JOptionPane.INFORMATION_MESSAGE);

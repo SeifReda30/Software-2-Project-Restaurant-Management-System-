@@ -220,7 +220,7 @@ public class Update extends javax.swing.JFrame {
     if(id.getText().equals("")) JOptionPane.showMessageDialog(null,"No data found!","Error",JOptionPane.ERROR_MESSAGE);
     else{
         try{
-            OrdersScreensController.UpdateOrdersTable(2, id.getText());
+            OrdersTableController.UpdateOrdersTable(2, id.getText());
         }catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null,"Deleting Customer's Orders is Failed!","Error",JOptionPane.ERROR_MESSAGE);}
         try{

@@ -5,8 +5,8 @@ import Models.*;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class OrdersScreensController {
-        public static int UpdateOrdersTable(int OperationType,Object...OrderData)throws SQLException{
+public class OrdersTableController {
+         public static int UpdateOrdersTable(int OperationType,Object...OrderData)throws SQLException{
         int ResultOfOperation = -1;
         switch(OperationType){
             case 0:
