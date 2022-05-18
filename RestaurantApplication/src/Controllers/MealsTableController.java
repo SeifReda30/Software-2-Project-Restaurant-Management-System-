@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 //enum Index{DataFetchMode, DataFetchWith};
 
-public class MealsScreensController {
+public class MealsTableController {
     public static ArrayList<Object> GetMealsData(Object...DataFetch)throws SQLException{
         ArrayList<Object> MealsData = new ArrayList<Object>();
         ResultSet ReturnedTableData = null;

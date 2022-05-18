@@ -22,7 +22,7 @@ public class Order extends javax.swing.JFrame {
             MealsTable.addColumn("id"); MealsTable.addColumn("name"); 
             MealsTable.addColumn("price"); MealsTable.addColumn("quantity");
         
-            ArrayList<Object> MealsData = MealsScreensController.GetMealsData(0);
+            ArrayList<Object> MealsData = MealsTableController.GetMealsData(0);
             for(int Index=0; Index<MealsData.size(); Index+=4){
                 MealsTable.addRow( new Object[] { MealsData.get(Index+MealsDataType.Id.ordinal()), MealsData.get(Index+MealsDataType.Name.ordinal()), 
                 MealsData.get(Index+MealsDataType.Price.ordinal()), MealsData.get(Index+MealsDataType.Quantity.ordinal())} );
@@ -360,8 +360,8 @@ public class Order extends javax.swing.JFrame {
             
             try{
             for(int OrderRow = 0;OrderRow<ordersTable.getRowCount();OrderRow++){
-                ArrayList<Object> MealsData = MealsScreensController.GetMealsData(1, ordersTable.getModel().getValueAt(OrderRow,1));
-                MealsScreensController.UpdateMealsTable(4, ordersTable.getModel().getValueAt(OrderRow,1),
+                ArrayList<Object> MealsData = MealsTableController.GetMealsData(1, ordersTable.getModel().getValueAt(OrderRow,1));
+                MealsTableController.UpdateMealsTable(4, ordersTable.getModel().getValueAt(OrderRow,1),
                         ( Integer.parseInt(MealsData.get(MealsDataType.Quantity.ordinal())+"") - Integer.parseInt(ordersTable.getModel().getValueAt(OrderRow,2)+"")));
             }
             }catch(SQLException ex){ JOptionPane.showMessageDialog(null,"updating meal quantity is Failed!","Error",JOptionPane.ERROR_MESSAGE); }
@@ -393,7 +393,7 @@ public class Order extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         try{ 
             mealid.setText("");
-            ArrayList<Object> MealsData = MealsScreensController.GetMealsData(2, NameSearch.getText());
+            ArrayList<Object> MealsData = MealsTableController.GetMealsData(2, NameSearch.getText());
             mealid.setText( MealsData.get(MealsDataType.Id.ordinal())+"");
             if(!mealid.getText().equals("")) {
                 mealsTable.setRowSelectionAllowed(true);
@@ -413,7 +413,7 @@ public class Order extends javax.swing.JFrame {
         NameSearch.setText(""); customerid.setText(""); mealid.setText(""); quantity.setText("");
         totalprice.setText(""); totalpoints.setText(""); MealsTable.setRowCount(0); OrdersTable.setRowCount(0);
         try{
-        ArrayList<Object> MealsData = MealsScreensController.GetMealsData(0);
+        ArrayList<Object> MealsData = MealsTableController.GetMealsData(0);
             for(int Index=0; Index<MealsData.size(); Index+=4){
                 MealsTable.addRow( new Object[] { MealsData.get(Index+MealsDataType.Id.ordinal()), MealsData.get(Index+MealsDataType.Name.ordinal()), 
                 MealsData.get(Index+MealsDataType.Price.ordinal()), MealsData.get(Index+MealsDataType.Quantity.ordinal())} );

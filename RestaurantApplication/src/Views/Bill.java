@@ -26,7 +26,7 @@ public class Bill extends javax.swing.JFrame {
         
         try {
             for(int RowOrder = 0; RowOrder < Orders.getRowCount();RowOrder++) {
-                ArrayList<Object> MealsData = MealsScreensController.GetMealsData(1, Orders.getValueAt(RowOrder,1) );
+                ArrayList<Object> MealsData = MealsTableController.GetMealsData(1, Orders.getValueAt(RowOrder,1) );
                 BillTable.addRow( new Object[]{ MealsData.get( RowOrder + MealsDataType.Name.ordinal()),
                 Orders.getValueAt(RowOrder,2),Orders.getValueAt(RowOrder,3), Orders.getValueAt(RowOrder,4)} );
             }
