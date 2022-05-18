@@ -98,8 +98,8 @@ public class CancelExistOrder extends javax.swing.JFrame {
              try{
                  OrderData = OrdersTableController.GetOrderData(customerid.getText(), mealid.getText(), quantity.getText());
                  System.out.println(OrderData.size());
-                 ArrayList<Object> MealData = MealsScreensController.GetMealsData(1, Integer.parseInt(mealid.getText()) );
-                 MealsScreensController.UpdateMealsTable(4, Integer.parseInt(mealid.getText()),
+                 ArrayList<Object> MealData = MealsTableController.GetMealsData(1, Integer.parseInt(mealid.getText()) );
+                 MealsTableController.UpdateMealsTable(4, Integer.parseInt(mealid.getText()),
                         ( Integer.parseInt(MealData.get(MealsDataType.Quantity.ordinal())+"") + Integer.parseInt(quantity.getText())) );
                 }catch(SQLException ex){ JOptionPane.showMessageDialog(null,"updating meal quantity is Failed!","Error",JOptionPane.ERROR_MESSAGE); }
              

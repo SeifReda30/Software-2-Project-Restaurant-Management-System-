@@ -1826,7 +1826,7 @@ public class admin extends javax.swing.JFrame {
     private void DeleteMealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteMealActionPerformed
     try {   if (this.mealIdDelete.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill Meal id","Error", JOptionPane.ERROR_MESSAGE);
             else {
-                    int isDeleted = MealsScreensController.UpdateMealsTable(1, Integer.parseInt(mealIdDelete.getText()+""));
+                    int isDeleted = MealsTableController.UpdateMealsTable(1, Integer.parseInt(mealIdDelete.getText()+""));
                     if(isDeleted == 1) JOptionPane.showMessageDialog(this, "Meal Deleted Successfully");  
                 }        
     }catch (SQLException ex) { JOptionPane.showMessageDialog(null,"Deleting Meal is Failed! Or Id Not Found !","Error",JOptionPane.ERROR_MESSAGE);}
@@ -1837,7 +1837,7 @@ public class admin extends javax.swing.JFrame {
          if (this.mealNameUpdate.getText().equals("")||this.mealPriceUpdate.getText().equals("")||this.mealQuantityUpdate.getText().equals(""))
              JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
          else {
-             int isUpdated  = MealsScreensController.UpdateMealsTable(2, Integer.parseInt(this.mealIdUpdate.getText()), 
+             int isUpdated  = MealsTableController.UpdateMealsTable(2, Integer.parseInt(this.mealIdUpdate.getText()), 
                        mealNameUpdate.getText(), Float.parseFloat(this.mealPriceUpdate.getText()), Integer.parseInt(this.mealQuantityUpdate.getText()));
              if(isUpdated == 1) JOptionPane.showMessageDialog(this, "Meal Updated Successfully");
                 }        
@@ -1857,10 +1857,10 @@ public class admin extends javax.swing.JFrame {
     try {   if (this.mealIdSpecialOffers.getText().equals("")||this.DiscountPercentageSpecialOffers.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
             else {  
                     double discountPercentage = Integer.parseInt(this.DiscountPercentageSpecialOffers.getText()) /100.0;
-                    ArrayList<Object> MealsData = MealsScreensController.GetMealsData(1, mealIdSpecialOffers.getText());
+                    ArrayList<Object> MealsData = MealsTableController.GetMealsData(1, mealIdSpecialOffers.getText());
                     double netPrice = Double.parseDouble(MealsData.get(MealsDataType.Price.ordinal())+"") - 
                                       ( discountPercentage * Double.parseDouble(MealsData.get(MealsDataType.Price.ordinal())+""));
-                    int isUpdated = MealsScreensController.UpdateMealsTable(3, MealsData.get(MealsDataType.Id.ordinal()), netPrice);
+                    int isUpdated = MealsTableController.UpdateMealsTable(3, MealsData.get(MealsDataType.Id.ordinal()), netPrice);
                     if(isUpdated==1) JOptionPane.showMessageDialog(this, "Special offer for "+MealsData.get(MealsDataType.Name.ordinal())+" with discount "+discountPercentage+"%"+" New Price : "+netPrice+"$");
                 }
     }catch (SQLException ex) {JOptionPane.showMessageDialog(null,"Modifying Meal is Failed! Or Id Not Found !","Error",JOptionPane.ERROR_MESSAGE);}
@@ -1869,7 +1869,7 @@ public class admin extends javax.swing.JFrame {
     private void SearchUpdateMealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchUpdateMealActionPerformed
         try {   if (this.mealIdUpdate.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill Meal id","Error", JOptionPane.ERROR_MESSAGE);
                 else{
-                     ArrayList<Object> MealsData = MealsScreensController.GetMealsData(1, Integer.parseInt(mealIdUpdate.getText()));
+                     ArrayList<Object> MealsData = MealsTableController.GetMealsData(1, Integer.parseInt(mealIdUpdate.getText()));
                     this.mealNameUpdate.setText(MealsData.get(MealsDataType.Name.ordinal())+"");
                     this.mealPriceUpdate.setText(Double.parseDouble(MealsData.get(MealsDataType.Price.ordinal())+"")+"");
                     this.mealQuantityUpdate.setText(Integer.parseInt(MealsData.get(MealsDataType.Quantity.ordinal())+"")+"");
@@ -1879,7 +1879,7 @@ public class admin extends javax.swing.JFrame {
 
     private void SearchMealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchMealActionPerformed
         try {   if (this.mealIdSearch.getText().equals("")) JOptionPane.showMessageDialog(this, "Please Fill all inputs","Error", JOptionPane.ERROR_MESSAGE);
-                else { ArrayList<Object> MealsData = MealsScreensController.GetMealsData(1, Integer.parseInt(mealIdSearch.getText()));
+                else { ArrayList<Object> MealsData = MealsTableController.GetMealsData(1, Integer.parseInt(mealIdSearch.getText()));
                         this.MealNameSearch.setText(MealsData.get(MealsDataType.Name.ordinal())+"");
                         this.MealPriceSearch.setText(Double.parseDouble(MealsData.get(MealsDataType.Price.ordinal())+"")+"$");
                         this.MealQuantitySearch.setText(Integer.parseInt(MealsData.get(MealsDataType.Quantity.ordinal())+"")+"");
@@ -1892,7 +1892,7 @@ public class admin extends javax.swing.JFrame {
             this.mealPriceAdd.getText().equals("") || this.mealQuantityAdd.getText().equals(""))
                     JOptionPane.showMessageDialog(this, "Please fill all inputs !","Error", JOptionPane.ERROR_MESSAGE);
             else{
-                   int isAdded = MealsScreensController.UpdateMealsTable(0, Integer.parseInt(mealIdAdd.getText()), mealNameAdd.getText(),
+                   int isAdded = MealsTableController.UpdateMealsTable(0, Integer.parseInt(mealIdAdd.getText()), mealNameAdd.getText(),
                    Double.parseDouble(mealPriceAdd.getText()), Integer.parseInt(mealQuantityAdd.getText()));
                    if(isAdded == 1) JOptionPane.showMessageDialog(this, "Meal Added Successfully");
                 }
@@ -2050,7 +2050,7 @@ public class admin extends javax.swing.JFrame {
                 meal_table.setModel(MealsDataTable); MealsDataTable.setRowCount(0); MealsDataTable.setColumnCount(0);
                 MealsDataTable.addColumn("id"); MealsDataTable.addColumn("name"); 
                 MealsDataTable.addColumn("price"); MealsDataTable.addColumn("quantity");
-                ArrayList<Object> MealsData = MealsScreensController.GetMealsData(0);
+                ArrayList<Object> MealsData = MealsTableController.GetMealsData(0);
                 for(int Index=0; Index<MealsData.size(); Index+=4){
                     MealsDataTable.addRow( new Object[] { MealsData.get(Index+MealsDataType.Id.ordinal()), MealsData.get(Index+MealsDataType.Name.ordinal()), 
                     MealsData.get(Index+MealsDataType.Price.ordinal()), MealsData.get(Index+MealsDataType.Quantity.ordinal())} );
@@ -2077,7 +2077,7 @@ public class admin extends javax.swing.JFrame {
                 meal_table_act.setModel(MealsDataTable); MealsDataTable.setRowCount(0); MealsDataTable.setColumnCount(0);
                 MealsDataTable.addColumn("id"); MealsDataTable.addColumn("name"); 
                 MealsDataTable.addColumn("price"); MealsDataTable.addColumn("quantity");
-                ArrayList<Object> MealsData = MealsScreensController.GetMealsData(0);
+                ArrayList<Object> MealsData = MealsTableController.GetMealsData(0);
                 for(int Index=0; Index<MealsData.size(); Index+=4){
                     MealsDataTable.addRow( new Object[] { MealsData.get(Index+MealsDataType.Id.ordinal()), MealsData.get(Index+MealsDataType.Name.ordinal()), 
                     MealsData.get(Index+MealsDataType.Price.ordinal()), MealsData.get(Index+MealsDataType.Quantity.ordinal())} );
